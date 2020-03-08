@@ -40,8 +40,10 @@ spring:
         git:
           uri: https://github.com/cxbiao/config
           search-paths: taxi
-          username: name
-          password: pwd
+          # 仓库用户名（公开库可以不用填写
+          #username: perfect
+          #  仓库密码（公开库可以不用填写）
+          #password: 123456
           #本地缓存目录
           basedir: D:/work/config/tmp
           #强制从GitHub配置中心中拉取配置信息，不走缓存
