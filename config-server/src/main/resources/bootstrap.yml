@@ -1,0 +1,72 @@
+server:
+  port: 8500
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://bryan:123456@localhost:8763/eureka/
+      #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registry-fetch-interval-seconds: 30
+    #健康检测 默认是关闭的
+    healthcheck:
+      enabled: true
+  instance:
+    #服务续约，心跳的时间间隔,默认30s
+    lease-renewal-interval-in-seconds: 10
+    #如果从前一次发送心跳时间起，90秒没接受到新的心跳，讲剔除服务,默认90s
+    lease-expiration-duration-in-seconds: 20
+    #设置实例id 每个服务下会有多个实例，这个id是唯一的
+    #instance-id: ${spring.application.name}:${server.port}
+    #使用ip显示
+    prefer-ip-address: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  application:
+    #微服务名
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cxbiao/config
+          search-paths: taxi
+          username: name
+          password: pwd
+          #本地缓存目录
+          basedir: D:/work/config/tmp
+          #强制从GitHub配置中心中拉取配置信息，不走缓存
+          force-pull: true
+#  rabbitmq:
+#    host: 192.168.56.101
+#    port: 5672
+#    virtual-host: /
+#    username: admin
+#    password: admin
+
+
+#生成秘钥指令
+#  keytool -genkeypair -alias config-server -keyalg RSA -dname "CN=Web Server,OU=China,O=www.howardliu.cn,L=Beijing,S=Beijing,C=China" -keypass perfect -keystore config-service.jks -storepass 123456
+
+#加密配置
+encrypt:
+  key-store:
+    location: config-server.jks
+    alias: config-server
+    #密钥库口令
+    password: 123456
+    #密钥口令
+    secret: perfect
+
+#redis.password={cipher}AQCCoeQc6KFhVwpyVX2BaeFUHvrlAY1PV07E5zkN03tsM8oRA5gdDGJUfws6PRhstrwxd9MIgS2qFYDrKr6CW7VGmXELVN0tR/aHvJLUBijLMJGMuGNT0LUePtSo6c2QHyZbcGn2wRrd434dI2z+SmMMhXPOwq2fJjWhXOGzp4oVitfs4xXFovmU74rw35wbLPbxhfmg+X5oPf0Nw9pz9aSXtIgKecx3fZLMpE3AQ0njwYJE3SsRl+se0K637OarlYOrjAb1lQllHqQE/rjO7lgHTfUnpdsLpDxpZ/VkZg7MpRqPK8YdmjydJf+eNe26CzUTdHV16RuqDWL94kpvu8V0owkmtVzvgEVjcrsdVwn3CDrvv8GocfDrFKgcPxpAvEU=
+
+

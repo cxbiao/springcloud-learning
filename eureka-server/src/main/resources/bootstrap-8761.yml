@@ -1,0 +1,34 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: bryan
+      password: 123456
+
+eureka:
+  instance:
+    #集群HA模式 只能使用ip或域名 localhost不可以
+    hostname: eureka8761.com
+  client:
+    register-with-eureka: true
+    #是否从eureka中拉取信息
+    fetch-registry: true
+    # 暴露eureka服务的地址 把自己注册到其它的erueka
+    service-url:
+      #需要修改C:\Windows\System32\drivers\etc\hosts文件
+      defaultZone: http://bryan:123456@eureka8762.com:8762/eureka/
+
+
+  server:
+    #自我保护模式，当出现出现网络分区、eureka在短时间内丢失过多客户端时，会进入自我保护模式，即一个服务长时间没有发送心跳，eureka也不会将其删除(租约到期也不会删除)，默认为true
+    enable-self-preservation: false
+    #eureka server清理无效节点的时间间隔，默认60000毫秒，即60秒
+    eviction-interval-timer-in-ms: 3000
+
+
+
+
+
