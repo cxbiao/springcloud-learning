@@ -135,14 +135,14 @@ public class UserServiceImpl implements UserService {
 
     public List<String> queryContentsFallback() {
         f.incrementAndGet();
-        log.info("===============queryContentsFallback=================");
+        log.info(Thread.currentThread().getName()+"===============queryContentsFallback=================");
 
         return Arrays.asList("queryContentsFallback");
     }
 
     public List<String> queryContentFallback() {
         f.incrementAndGet();
-        log.info("===============queryContentFallback=================");
+        log.info(Thread.currentThread().getName()+"===============queryContentFallback=================");
 
         return Arrays.asList("queryContentFallback");
     }

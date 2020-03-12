@@ -29,6 +29,9 @@ public class UserController {
     @Value("${username}")
     private String username;
 
+    @Value("${username1}")
+    private String username1;
+
     @Value("${redis.password}")
     private String redispass;
 
@@ -48,6 +51,9 @@ public class UserController {
         log.info("Environment======username======" + environment.getProperty("username"));
         log.info("@Value======redispass======" + redispass);
         log.info("Environment======redispass======" + environment.getProperty("redis.password"));
+
+        log.info("@Value======username1======" + username1);
+        log.info("Environment======username1======" + environment.getProperty("username1"));
 
         return userService.queryContent();
     }

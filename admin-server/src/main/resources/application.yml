@@ -1,0 +1,25 @@
+server:
+  port: 8200
+
+
+
+spring:
+  application:
+    name: admin-server
+  # °²È«ÅäÖÃ
+  security:
+    user:
+      name: admin
+      password: admin
+
+eureka:
+  instance:
+    metadata-map:
+      user:
+        name: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+  client:
+    service-url:
+      defaultZone: http://bryan:123456@localhost:8763/eureka/
+
+

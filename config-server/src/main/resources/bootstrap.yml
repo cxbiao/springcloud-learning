@@ -8,8 +8,8 @@ eureka:
       #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
     registry-fetch-interval-seconds: 30
     #健康检测 默认是关闭的
-    healthcheck:
-      enabled: true
+#    healthcheck:
+#      enabled: true
   instance:
     #服务续约，心跳的时间间隔,默认30s
     lease-renewal-interval-in-seconds: 10
@@ -39,6 +39,7 @@ spring:
       server:
         git:
           uri: https://github.com/cxbiao/config
+          #配置文件所在的目录
           search-paths: taxi
           # 仓库用户名（公开库可以不用填写
           #username: perfect

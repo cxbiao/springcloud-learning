@@ -49,7 +49,7 @@ hystrix:
        execution:
           isolation:
             thread:
-                 #全局超时时间 要比ribbon的readTimeOut超时时间长
+                 #全局超时时间 要比ribbon的readTimeOut(+包括重试)超时时间长
                  timeoutInMilliseconds: 30000
      errorMessage:
         execution:

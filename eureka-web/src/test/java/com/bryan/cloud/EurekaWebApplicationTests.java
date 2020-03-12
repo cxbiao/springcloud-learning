@@ -37,8 +37,8 @@ class EurekaWebApplicationTests {
 
     @Test
     public void hystrixTest() {
-        //hystrixTest1();
-        //hystrixTest2();
+        hystrixTest1();
+        hystrixTest2();
     }
 
 
@@ -61,11 +61,11 @@ class EurekaWebApplicationTests {
             cdl.countDown();
         }
 
-        try {
-            Thread.currentThread().join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.currentThread().join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

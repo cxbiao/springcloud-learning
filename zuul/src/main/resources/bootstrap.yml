@@ -1,5 +1,5 @@
 server:
-  port: 8300
+  port: 9000
 
 eureka:
   client:
@@ -22,7 +22,7 @@ eureka:
 
 spring:
   application:
-    name: micro-order
+    name: api-zuul
   cloud:
     bus:
       refresh:
@@ -61,7 +61,7 @@ spring:
     password: admin
 
 
-
+  # http://localhost:9000/actuator/hystrix.stream
 management:
   endpoint:
     health:
@@ -73,8 +73,18 @@ management:
       exposure:
         include: '*'
 
-#本地和远程配置都有的key,远程配置会覆盖本地
-username1: custom
 
 
+
+ribbon:
+  ConnectTimeout: 2000
+  ReadTimeout: 5000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
 
