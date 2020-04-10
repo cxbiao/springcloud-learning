@@ -10,6 +10,8 @@ post
 * 加密：POST http://localhost:8500/encrypt
 * 解密：POST http://localhost:8500/decrypt
   刷新配置url POST  http://localhost:8500/actuator/bus-refresh
+
+  获得配置  http://localhost:8500/api-zuul.json
 * */
 
 @SpringBootApplication

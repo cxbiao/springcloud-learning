@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bryan.cloud</groupId>
+    <artifactId>springcloud-learning</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springcloud-learning</name>
+
+    <modules>
+        <module>admin-server</module>
+        <module>config-server</module>
+        <module>eureka-server</module>
+        <module>eureka-order</module>
+        <module>eureka-web</module>
+        <module>hystrix-dashboard</module>
+        <module>service-api</module>
+        <module>zuul</module>
+    </modules>
+
+
+
+</project>

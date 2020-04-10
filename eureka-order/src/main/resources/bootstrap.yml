@@ -21,6 +21,15 @@ eureka:
     prefer-ip-address: true
 
 spring:
+  #zipkin:
+    # 若在同一个注册中心的话可以启用自动发现，省略base-url
+    #spring.zipkin.locator.discovery.enabled=true
+   # base-url: http://localhost:9411 #所有的数据提交到此服务之中
+#    sender:
+#      type: web  #提交的类型是web 服务
+  sleuth:
+    sampler:
+      probability: 1.0   #定义抽样比率，默认为0.1
   application:
     name: micro-order
   cloud:
@@ -30,6 +39,7 @@ spring:
       trace:
         enabled: true
     config:
+      #name: xxx #全局配置名字，替换application.name
       profile: dev
       #分支
       label: master

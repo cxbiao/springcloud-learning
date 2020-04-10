@@ -21,6 +21,17 @@ eureka:
     prefer-ip-address: true
 
 spring:
+  #使用ELK,不使用zipkin分析日志
+ # zipkin:
+    # 若在同一个注册中心的话可以启用自动发现，省略base-url
+    #spring.zipkin.locator.discovery.enabled=true
+  #   base-url: http://localhost:9411 #所有的数据提交到此服务之中
+#     sender:
+#       type: web  #提交的类型是web 服务
+  sleuth:
+    sampler:
+      probability: 1.0   #定义抽样比率，默认为0.1
+
   application:
     name: api-zuul
   cloud:
@@ -73,6 +84,14 @@ management:
       exposure:
         include: '*'
 
+#zuul默认采用信号量隔离策略
+#设置Hystrix隔离策略为线程池
+zuul:
+  ribbon-isolation-strategy: thread
+  #每个路由使用独立的线程池
+  thread-pool:
+    use-separate-thread-pools: true
+    thread-pool-key-prefix: zuulbryan
 
 
 
@@ -87,4 +106,3 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 100000
-
