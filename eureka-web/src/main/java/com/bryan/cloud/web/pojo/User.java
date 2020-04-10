@@ -1,7 +1,10 @@
 package com.bryan.cloud.web.pojo;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class User implements Serializable {
     private Integer uid;
     
@@ -33,5 +36,7 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 
 }

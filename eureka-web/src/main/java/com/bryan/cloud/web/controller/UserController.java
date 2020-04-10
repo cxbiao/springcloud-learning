@@ -26,7 +26,8 @@ public class UserController {
     private LoadBalancerClient loadBalancerClient;
 
     @RequestMapping("/printInfo")
-    public List<String> printInfo(HttpServletRequest request) {
+    public List<String> printInfo(HttpServletRequest request /** ,@RequestBody User user **/) {
+       // log.info(user.toString());
         Cookie[] cookies = request.getCookies();
 
         if(cookies != null) {
@@ -56,7 +57,8 @@ public class UserController {
     }
 
     @RequestMapping("/queryContent")
-    public List<String> queryContent() {
+    public List<String> queryContent(String id,String name) {
+        log.info("id=>"+id+",name=>"+name);
         log.info(Thread.currentThread().getName());
         return userService.queryContent();
     }

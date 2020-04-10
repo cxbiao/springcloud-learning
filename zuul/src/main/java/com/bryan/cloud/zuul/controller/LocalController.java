@@ -14,4 +14,7 @@ public class LocalController {
         log.info("zuul->queryUser");
         return "zuul->queryUser";
     }
+
+
+
 }
