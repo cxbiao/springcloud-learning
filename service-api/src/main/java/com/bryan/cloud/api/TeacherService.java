@@ -1,5 +1,6 @@
 package com.bryan.cloud.api;
 
+import com.bryan.cloud.bean.ApiResponse;
 import com.bryan.cloud.bean.Teacher;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ public interface TeacherService {
     String getAllTeacher();
 
     @PostMapping("/saveTeacher")
-    String saveTeacher(@RequestBody Teacher Teacher);
+    ApiResponse saveTeacher(@RequestBody Teacher Teacher);
 
     @GetMapping("/getTeacherById")
     String getTeacherById(@RequestParam("id") Integer id);

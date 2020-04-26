@@ -1,6 +1,7 @@
 package com.bryan.cloud.zuul.controller;
 
 import com.bryan.cloud.zuul.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
+@Slf4j
 public class ExceptionController implements ErrorController {
 
     /**
@@ -25,7 +27,7 @@ public class ExceptionController implements ErrorController {
         Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
         String message = (String) request.getAttribute("javax.servlet.error.message");
 
-
+        log.error(message,exception);
         if (StringUtils.isEmpty(message)) {
             message = "微服务不可用，请稍后重试";
         }

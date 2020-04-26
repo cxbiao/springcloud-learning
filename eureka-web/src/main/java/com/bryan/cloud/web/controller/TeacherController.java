@@ -1,6 +1,7 @@
 package com.bryan.cloud.web.controller;
 
 
+import com.bryan.cloud.bean.ApiResponse;
 import com.bryan.cloud.bean.Teacher;
 import com.bryan.cloud.web.service.feign.TeacherServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class TeacherController {
     }
 
     @RequestMapping("/saveTeacher")
-    public String saveTeacher(@RequestBody Teacher teacher) {
+    public ApiResponse saveTeacher(@RequestBody Teacher teacher) {
         return teacherService.saveTeacher(teacher);
     }
 
