@@ -6,7 +6,7 @@ server:
 spring:
   application:
     name: admin-server
-  # °²È«ÅäÖÃ
+  # å®‰å…¨é…ç½®
   security:
     user:
       name: admin

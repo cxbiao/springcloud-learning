@@ -60,8 +60,10 @@ feign:
         - application/json
       min-request-size: 2048 # 超过2048的字节进行压缩
 
-
-
+#配置feign日志级别
+logging:
+  level:
+    com.bryan.cloud.web.service.feign: debug
 
 
 
@@ -90,7 +92,7 @@ hystrix:
 # 关闭ribbon访问注册中心Eureka Server发现服务，但是服务依旧会注册。
 #true使用eureka false不使用
 ribbon:
-# 设置httpclient 超时时间才生效
+# 设置httpclient 超时时间才生效,然后重试（超过重试次数，报错），不配置的话不会有超时
 #  http:
 #    client:
 #      enabled: true
@@ -104,7 +106,7 @@ ribbon:
 #  ribbon:
 #    listOfServers: localhost:8001,localhost:8002,localhost:8003
 
-#默认有重试 要大写 这样配置实测无效
+#默认有重试 要大写(?) ,应该和大小写无关，这样配置实测无效
 #MICRO-ORDER:
 #  ribbon:
 #    #单位ms ,请求连接超时时间
